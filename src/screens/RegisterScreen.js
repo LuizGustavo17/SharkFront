@@ -4,7 +4,7 @@ import focus from '../assets/images/focus.png';
 import {Fragment, useState} from 'react';
 import Styled from 'styled-components';
 import {Navigate} from 'react-router-dom';
-import '../styles/Mystyles.css'
+import '../styles/Mystyles.css' //era pra este css estar so aqui, mas esta indo para as pagina de login e user tambem.
 const Box1=Styled(Box)`
 margin-top:15rem;
 margin-left:45rem;
