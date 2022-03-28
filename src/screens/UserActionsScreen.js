@@ -19,7 +19,7 @@ function UserActionsScreen(){
         }
     }
     function cardfunction(matricula, hoursharkin, hoursharkout, name, ){
-        const Avatar = require('../assets/images/avatares/'+ matricula +'/image.jpeg');
+        const Avatar = require('../assets/images/avatares/120060024/image.jpeg');
         return (
             <Card>
                 <Imgcard src={Avatar}/>
@@ -41,7 +41,7 @@ function UserActionsScreen(){
             <H1High>Sharkins da Semana</H1High>
             <SectionPlantao>
                 {
-                    sharkin.forEach(res => cardfunction(res.User.matricula, res.HourSharkin, res.HourSharkout, res.User.name))
+                    sharkin.forEach(res => cardfunction(res.User_Id.matricula, res.HourSharkin, res.HourSharkout, res.User_Id.name))
                 }
             </SectionPlantao>
             <Buttonshark>Sharkin</Buttonshark>

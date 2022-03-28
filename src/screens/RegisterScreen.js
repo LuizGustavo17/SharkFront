@@ -33,7 +33,7 @@ function RegisterScreen() {
   const HandleSubmit = async (evt) => {
     evt.preventDefault();
     try{
-      const user = await UserService.register({name: name, email:email, password: password, EmPlantao:false, });
+      const user = await UserService.register({name: name, email:email, password: password, matricula:matricula, EmPlantao:false, });
       setredirectToLogin(true);
     }
     catch(error){
