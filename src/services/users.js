@@ -5,12 +5,12 @@ const UserService = {
         const response = await Api.post('users/login', params);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('matricula', response.data.user.matricula);
+        localStorage.setItem('Emplantao', false);
     },
     logout: () => {
         localStorage.removeItem('user', null);
         localStorage.removeItem('token', null);
-        localStorage.removeItem('matricula', null);
+        localStorage.removeItem('Emplantao', null);
     }
 }
 export default UserService;

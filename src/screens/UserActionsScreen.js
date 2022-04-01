@@ -10,9 +10,20 @@ import Plogout from '../components/UserActionsComponents/Plogout';
 import Circle from '../components/UserActionsComponents/Circle';
 import SharkinService from '../services/sharkin';
 import requires from '../components/UserActionsComponents/Requires';
+import {Navigate} from 'react-router-dom';
+function Handleclick(){
+    var plantao = localStorage.getItem('EmPlantao');
+    if(plantao===false){
+        SharkinService.sharkin();
+        localStorage.setItem('EmPlantao', true);
+    } else {
+        SharkinService.sharkout();
+        localStorage.setItem('EmPlantao', false);
+    }
+    return (<Navigate to={{pathname: "UserActionsScreen"}}/>);
+}
 function UserActionsScreen(){
     const [sharkin, Setsharkin] = useState([]);
-    
     
     useEffect(() =>{
         const fetchData = async () => {
@@ -22,7 +33,13 @@ function UserActionsScreen(){
         
         fetchData().catch(console.error).then();
     }, [])
-    //console.log(sharkin);
+    var messagebutton;
+    var l =localStorage.getItem('Emplantao');
+    if(l===false){
+       messagebutton="Sharkin";
+    } else {
+        messagebutton="Sharkout";
+    }
     return(
         <Fragment>
         <Bodygradient>
@@ -49,7 +66,7 @@ function UserActionsScreen(){
 
                 
             </SectionPlantao>
-            <Buttonshark>Sharkin</Buttonshark>
+            <Buttonshark onClick={Handleclick}>{messagebutton}</Buttonshark>
         </Bodygradient>
     </Fragment>
     );
