@@ -15,46 +15,48 @@ import {Navigate} from 'react-router-dom';
 
 
 function UserActionsScreen(){
-    const [sharkin, setSharkin] = useState([]);
-    const [plantao, setPlantao] = useState(localStorage.getItem('Emplantao'));
-    const [messagebutton, setMessageButton] = useState();
-    if(plantao==='false'){
-        setMessageButton()
+    const [sharkin, Setsharkin] = useState([]);
+    const [logout, Setlogout] = useState(false);
+    function HandleLogout(){
+        UsersService.logout();
+        Setlogout(true);
     }
     function Handleclick(){
+        var plantao = localStorage.getItem('Emplantao');
         if(plantao==='false'){
-            SharkinService.sharkin();  
-            setPlantao(true); 
+            SharkinService.sharkin();
+            localStorage.setItem('Emplantao', true);   
         } else {
             SharkinService.sharkout();
-            setPlantao(false);
+            localStorage.setItem('Emplantao', false);
         }
+        window.location.reload();
     }
-    console.log(localStorage.getItem('token'));
     useEffect(() =>{
         const fetchData = async () => {
             const response = await SharkinService.index();
-            setSharkin(response.data);
+            Setsharkin(response.data);
         }
         
         fetchData().catch(console.error).then();
     }, [])
-    useEffect(   () => {    
-        console.log('teste'); 
-        localStorage.setItem('Emplantao', plantao);
-        if(plantao==='false'){
-            setMessageButton('Sharkin');
-         } else {
-            setMessageButton('Sharkout');
-         }
-       },   [plantao], );
+    var messagebutton;
+    var l =localStorage.getItem('Emplantao');
+    if(l==='false'){
+       messagebutton="Sharkin";
+    } else {
+        messagebutton="Sharkout";
+    }
+    if(logout===true){
+        return (<Navigate to={{pathname: "/Login"}}/>)
+    }
     return(
         <Fragment>
         <Bodygradient>
-            <Plogout>logout</Plogout>
-            <Circle></Circle>
+            <Plogout onClick={HandleLogout}>logout</Plogout>
+            <Circle  onClick={HandleLogout}></Circle>
             <H1High>Sharkins da Semana</H1High>
-            <SectionPlantao>
+            <SectionPlantao id='1'>
                 
                     {
                         sharkin.map((index) => {
