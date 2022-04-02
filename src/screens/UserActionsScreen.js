@@ -9,37 +9,45 @@ import Buttonshark from '../components/UserActionsComponents/Buttonshark';
 import Plogout from '../components/UserActionsComponents/Plogout';
 import Circle from '../components/UserActionsComponents/Circle';
 import SharkinService from '../services/sharkin';
+import UsersService from '../services/users';
 import requires from '../components/UserActionsComponents/Requires';
 import {Navigate} from 'react-router-dom';
-function Handleclick(){
-    var plantao = localStorage.getItem('EmPlantao');
-    if(plantao===false){
-        SharkinService.sharkin();
-        localStorage.setItem('EmPlantao', true);
-    } else {
-        SharkinService.sharkout();
-        localStorage.setItem('EmPlantao', false);
-    }
-    return (<Navigate to={{pathname: "UserActionsScreen"}}/>);
-}
+
+
 function UserActionsScreen(){
-    const [sharkin, Setsharkin] = useState([]);
-    
+    const [sharkin, setSharkin] = useState([]);
+    const [plantao, setPlantao] = useState(localStorage.getItem('Emplantao'));
+    const [messagebutton, setMessageButton] = useState();
+    if(plantao==='false'){
+        setMessageButton()
+    }
+    function Handleclick(){
+        if(plantao==='false'){
+            SharkinService.sharkin();  
+            setPlantao(true); 
+        } else {
+            SharkinService.sharkout();
+            setPlantao(false);
+        }
+    }
+    console.log(localStorage.getItem('token'));
     useEffect(() =>{
         const fetchData = async () => {
             const response = await SharkinService.index();
-                Setsharkin(response.data);
+            setSharkin(response.data);
         }
         
         fetchData().catch(console.error).then();
     }, [])
-    var messagebutton;
-    var l =localStorage.getItem('Emplantao');
-    if(l===false){
-       messagebutton="Sharkin";
-    } else {
-        messagebutton="Sharkout";
-    }
+    useEffect(   () => {    
+        console.log('teste'); 
+        localStorage.setItem('Emplantao', plantao);
+        if(plantao==='false'){
+            setMessageButton('Sharkin');
+         } else {
+            setMessageButton('Sharkout');
+         }
+       },   [plantao], );
     return(
         <Fragment>
         <Bodygradient>
