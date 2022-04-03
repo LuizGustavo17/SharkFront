@@ -64,8 +64,8 @@ function UserActionsScreen(){
                             <Imgcard src={Avatar}/>
                             <Container>
                             <h4><b>{index.User_Id.name}</b></h4>
-                            <p><b>Sharkin:  </b>{moment(index.HourSharkin).format('L')}  {moment(index.HourSharkin).format('HH:mm:ss') }</p>
-                            <p><b>Sharkout:  </b>{moment(index.HourSharkin).format('L')}  {moment(index.HourSharkin).format('HH:mm:ss')}</p>
+                            <p><b>Sharkin:  </b>{moment(index.HourSharkin).format('DD/MM/YYYY')}  {moment(index.HourSharkin).format('HH:mm:ss') }</p>
+                            <p><b>Sharkout:  </b>{moment(index.HourSharkout).format('DD/MM/YYYY')}  {moment(index.HourSharkout).format('HH:mm:ss')}</p>
                             </Container>
                         </Card>
                             )
