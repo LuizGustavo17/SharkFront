@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 const Button_submit=styled.button`
     margin-top:3rem;
-    margin-left:2.3rem;
-    background-color: rgb(86, 86, 214);
+    margin-left:4em;
+    border-color: #384B59;
+    font-family:clear-sans, helvetica, sans-serif;
+    border-radius:0.7rem;
+    background-color: #263642;
     color:white;
-    width:20rem;
+    width:13rem;
     height:3rem;
-    font-size: medium;
+    font-size: 1.5rem;
 `
 export default Button_submit;

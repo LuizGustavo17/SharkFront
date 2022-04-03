@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 const Imgfocus=styled.img`
-    margin-left: ${props=>props.marginleft};
-    margin-top: ${props=>props.margintop};
+    width:8rem;
+    height:8rem;
+   
 `
 export default Imgfocus;

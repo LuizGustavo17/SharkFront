@@ -12,8 +12,7 @@ import SharkinService from '../services/sharkin';
 import UsersService from '../services/users';
 import requires from '../components/UserActionsComponents/Requires';
 import {Navigate} from 'react-router-dom';
-
-
+import moment from 'moment';
 function UserActionsScreen(){
     const [sharkin, Setsharkin] = useState([]);
     const [logout, Setlogout] = useState(false);
@@ -57,7 +56,6 @@ function UserActionsScreen(){
             <Circle  onClick={HandleLogout}></Circle>
             <H1High>Sharkins da Semana</H1High>
             <SectionPlantao id='1'>
-                
                     {
                         sharkin.map((index) => {
                             const Avatar = requires(index.User_Id.matricula);
@@ -66,8 +64,8 @@ function UserActionsScreen(){
                             <Imgcard src={Avatar}/>
                             <Container>
                             <h4><b>{index.User_Id.name}</b></h4>
-                            <p><b>Sharkin:</b>{index.HourSharkin}</p>
-                            <p><b>Sharkout:</b>{index.HourSharkout}</p>
+                            <p><b>Sharkin:  </b>{moment(index.HourSharkin).format('L')}  {moment(index.HourSharkin).format('HH:mm:ss') }</p>
+                            <p><b>Sharkout:  </b>{moment(index.HourSharkin).format('L')}  {moment(index.HourSharkin).format('HH:mm:ss')}</p>
                             </Container>
                         </Card>
                             )

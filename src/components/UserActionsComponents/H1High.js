@@ -5,6 +5,5 @@ margin-top:2rem;
 margin-left:3rem;
 margin-right:1.2rem;
 text-align:center;
-color:white;
-border: 5px solid white;`
+color:white;`
 export default H1High;

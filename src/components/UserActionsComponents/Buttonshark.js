@@ -5,7 +5,7 @@ const Buttonshark= styled.button`
   width:140px;
   height:50px;
   border-width:1px;
-  color:#3a8a9e;
+  color:white;
   border-color:#d6bcd6;
   position:fixed;
   font-weight:bold;
@@ -17,5 +17,5 @@ const Buttonshark= styled.button`
   margin-top:3rem;
   margin-left:55rem;
   text-shadow: 0px 1px 0px #e1e2ed;
-  background:linear-gradient(#ededed, #bab1ba);`;
+  background:linear-gradient(#6C8493, #263642);`;
 export default Buttonshark;
